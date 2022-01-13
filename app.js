@@ -6,10 +6,12 @@ const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 
+// render the main page
 app.get("/", function (req, res) {
     res.sendFile(__dirname + "/index.html");
 });
 
+// get the weather from openweathermap api and send it to the main page
 app.post("/", function(req, res) {
 
     const query = req.body.cityName;
@@ -36,8 +38,7 @@ app.post("/", function(req, res) {
     });
 });
 
-
-
+// listen on port 3000
 app.listen(3000, function() {
     console.log("Server is running on port 3000.");
 });
